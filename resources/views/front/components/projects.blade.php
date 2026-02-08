@@ -1,18 +1,18 @@
 <section id="projects" class="py-20 bg-slate-900/50">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Section Header -->
-        <div class="text-center mb-16">
+        <div class="text-center mb-16 animate-on-scroll fade-up">
             <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
                 My <span class="text-cyan-400">Projects</span>
             </h2>
-            <div class="w-20 h-1 bg-cyan-400 mx-auto rounded-full"></div>
+            <div class="w-20 h-1 bg-cyan-400 mx-auto rounded-full divider-glow"></div>
             <p class="text-slate-400 mt-4 max-w-2xl mx-auto">
                 Here are some of my recent projects that showcase my skills and experience
             </p>
         </div>
 
         <!-- Project Filters -->
-        <div class="flex flex-wrap justify-center gap-3 mb-12">
+        <div class="flex flex-wrap justify-center gap-3 mb-12 animate-on-scroll fade-down">
             <button class="filter-btn px-4 py-2 bg-cyan-500 text-slate-900 font-medium rounded-lg transition-all" data-filter="all">All</button>
             @foreach($projectCategories as $category)
             <button class="filter-btn px-4 py-2 bg-slate-800 text-slate-300 hover:bg-slate-700 font-medium rounded-lg transition-all" data-filter="{{ $category }}">{{ ucfirst($category) }}</button>
@@ -20,9 +20,9 @@
         </div>
 
         <!-- Projects Grid -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid" data-stagger>
             @forelse($projects as $index => $project)
-            <div class="project-card group bg-slate-800/50 border border-slate-700 rounded-xl overflow-hidden hover:border-cyan-400/50 transition-all cursor-pointer"
+            <div class="project-card animate-on-scroll fade-up group bg-slate-800/50 border border-slate-700 rounded-xl overflow-hidden hover:border-cyan-400/50 transition-all cursor-pointer"
                  data-categories="{{ json_encode($project->categories ?? []) }}"
                  data-project-index="{{ $index }}"
                  onclick="openProjectModal({{ $index }})">

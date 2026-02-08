@@ -1,4 +1,4 @@
-<nav class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
+<nav class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800 navbar-entrance transition-all duration-300" data-navbar>
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
             <!-- Logo -->
@@ -8,11 +8,11 @@
 
             <!-- Desktop Menu -->
             <div class="hidden md:flex items-center space-x-8">
-                <a href="#home" class="text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium">Home</a>
-                <a href="#about" class="text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium">About</a>
-                <a href="#skills" class="text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium">Skills</a>
-                <a href="#projects" class="text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium">Projects</a>
-                <a href="#experience" class="text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium">Experience</a>
+                <a href="#home" class="nav-link text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium">Home</a>
+                <a href="#about" class="nav-link text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium">About</a>
+                <a href="#skills" class="nav-link text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium">Skills</a>
+                <a href="#projects" class="nav-link text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium">Projects</a>
+                <a href="#experience" class="nav-link text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium">Experience</a>
                 <a href="#contact" class="px-4 py-2 bg-cyan-500 hover:bg-cyan-600 text-slate-900 font-semibold rounded-lg transition-colors text-sm">Contact Me</a>
             </div>
 
@@ -24,14 +24,14 @@
             </button>
         </div>
 
-        <!-- Mobile Menu -->
-        <div class="hidden md:hidden pb-4" id="mobile-menu">
-            <div class="flex flex-col space-y-3">
-                <a href="#home" class="text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium py-2">Home</a>
-                <a href="#about" class="text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium py-2">About</a>
-                <a href="#skills" class="text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium py-2">Skills</a>
-                <a href="#projects" class="text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium py-2">Projects</a>
-                <a href="#experience" class="text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium py-2">Experience</a>
+        <!-- Mobile Menu (Animated) -->
+        <div class="md:hidden mobile-menu-animated" id="mobile-menu">
+            <div class="flex flex-col space-y-3 pb-4">
+                <a href="#home" class="nav-link text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium py-2">Home</a>
+                <a href="#about" class="nav-link text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium py-2">About</a>
+                <a href="#skills" class="nav-link text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium py-2">Skills</a>
+                <a href="#projects" class="nav-link text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium py-2">Projects</a>
+                <a href="#experience" class="nav-link text-slate-300 hover:text-cyan-400 transition-colors text-sm font-medium py-2">Experience</a>
                 <a href="#contact" class="px-4 py-2 bg-cyan-500 hover:bg-cyan-600 text-slate-900 font-semibold rounded-lg transition-colors text-sm text-center">Contact Me</a>
             </div>
         </div>
@@ -41,6 +41,6 @@
 <script>
     document.getElementById('mobile-menu-btn').addEventListener('click', function() {
         const menu = document.getElementById('mobile-menu');
-        menu.classList.toggle('hidden');
+        menu.classList.toggle('menu-open');
     });
 </script>

@@ -17,6 +17,9 @@
     @stack('styles')
 </head>
 <body class="antialiased bg-slate-950 text-slate-100">
+    <!-- Splash Screen -->
+    @include('front.components.splash')
+
     <!-- Navbar -->
     @include('front.components.navbar')
 

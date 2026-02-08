@@ -1,38 +1,38 @@
 <section id="about" class="py-20 bg-slate-900/50">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Section Header -->
-        <div class="text-center mb-16">
+        <div class="text-center mb-16 animate-on-scroll fade-up">
             <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
                 About <span class="text-cyan-400">Me</span>
             </h2>
-            <div class="w-20 h-1 bg-cyan-400 mx-auto rounded-full"></div>
+            <div class="w-20 h-1 bg-cyan-400 mx-auto rounded-full divider-glow"></div>
         </div>
 
         <div class="grid lg:grid-cols-2 gap-12 items-center">
-            <!-- Image/Stats Side -->
+            <!-- Stats Cards -->
             <div class="space-y-8">
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center hover:border-cyan-400/50 transition-colors">
-                        <div class="text-4xl font-bold text-cyan-400 mb-2">{{ $profile?->years_experience ?? 0 }}+</div>
+                <div class="grid grid-cols-2 gap-4" data-stagger>
+                    <div class="animate-on-scroll scale-in bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center hover:border-cyan-400/50 transition-colors">
+                        <div class="text-4xl font-bold text-cyan-400 mb-2" data-counter="{{ $profile?->years_experience ?? 0 }}" data-counter-suffix="+">0+</div>
                         <div class="text-slate-400 text-sm">Years Experience</div>
                     </div>
-                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center hover:border-cyan-400/50 transition-colors">
-                        <div class="text-4xl font-bold text-cyan-400 mb-2">{{ $profile?->projects_completed ?? 0 }}+</div>
+                    <div class="animate-on-scroll scale-in bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center hover:border-cyan-400/50 transition-colors">
+                        <div class="text-4xl font-bold text-cyan-400 mb-2" data-counter="{{ $profile?->projects_completed ?? 0 }}" data-counter-suffix="+">0+</div>
                         <div class="text-slate-400 text-sm">Projects Completed</div>
                     </div>
-                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center hover:border-cyan-400/50 transition-colors">
-                        <div class="text-4xl font-bold text-cyan-400 mb-2">{{ $profile?->happy_clients ?? 0 }}+</div>
+                    <div class="animate-on-scroll scale-in bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center hover:border-cyan-400/50 transition-colors">
+                        <div class="text-4xl font-bold text-cyan-400 mb-2" data-counter="{{ $profile?->happy_clients ?? 0 }}" data-counter-suffix="+">0+</div>
                         <div class="text-slate-400 text-sm">Happy Clients</div>
                     </div>
-                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center hover:border-cyan-400/50 transition-colors">
-                        <div class="text-4xl font-bold text-cyan-400 mb-2">10+</div>
+                    <div class="animate-on-scroll scale-in bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center hover:border-cyan-400/50 transition-colors">
+                        <div class="text-4xl font-bold text-cyan-400 mb-2" data-counter="10" data-counter-suffix="+">0+</div>
                         <div class="text-slate-400 text-sm">Technologies</div>
                     </div>
                 </div>
             </div>
 
             <!-- Text Content -->
-            <div class="space-y-6">
+            <div class="space-y-6 animate-on-scroll fade-right">
                 <h3 class="text-2xl font-semibold text-white">
                     A passionate developer who loves building things
                 </h3>

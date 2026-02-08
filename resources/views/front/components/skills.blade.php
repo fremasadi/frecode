@@ -1,18 +1,18 @@
 <section id="skills" class="py-20">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Section Header -->
-        <div class="text-center mb-16">
+        <div class="text-center mb-16 animate-on-scroll fade-up">
             <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
                 My <span class="text-cyan-400">Skills</span>
             </h2>
-            <div class="w-20 h-1 bg-cyan-400 mx-auto rounded-full"></div>
+            <div class="w-20 h-1 bg-cyan-400 mx-auto rounded-full divider-glow"></div>
             <p class="text-slate-400 mt-4 max-w-2xl mx-auto">
                 Technologies and tools I use to bring ideas to life. Click on each category to see proficiency levels.
             </p>
         </div>
 
         <!-- Skills Categories -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-stagger>
             @forelse($skillCategories as $category)
             @php
                 $colorClasses = [
@@ -26,7 +26,7 @@
                 $color = $colorClasses[$category->color] ?? $colorClasses['cyan'];
                 $skillsJson = $category->skills->map(fn($s) => ['name' => $s->name, 'level' => $s->level])->toJson();
             @endphp
-            <div class="skill-card bg-slate-800/50 border border-slate-700 rounded-xl p-6 {{ $color['hover'] }} transition-all group cursor-pointer"
+            <div class="skill-card animate-on-scroll fade-up bg-slate-800/50 border border-slate-700 rounded-xl p-6 {{ $color['hover'] }} transition-all group cursor-pointer"
                  data-category="{{ $category->slug }}"
                  data-skills='{{ $skillsJson }}'
                  data-color="{{ $category->color }}">
