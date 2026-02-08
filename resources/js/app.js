@@ -21,12 +21,6 @@ function initSplashScreen() {
         return;
     }
 
-    if (sessionStorage.getItem('splash-seen')) {
-        splash.remove();
-        startMainAnimations();
-        return;
-    }
-
     // Show splash, hide main content
     document.body.classList.add('splash-active');
 
@@ -41,8 +35,6 @@ function initSplashScreen() {
             startMainAnimations();
             splash.remove();
         }, 600);
-
-        sessionStorage.setItem('splash-seen', '1');
     }, 2200);
 }
 
