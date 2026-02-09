@@ -79,46 +79,30 @@
 </section>
 
 <!-- Project Detail Modal - Full Screen -->
-<div id="project-modal" class="fixed inset-0 z-50 hidden">
-    <!-- Backdrop -->
-    <div class="absolute inset-0 bg-slate-950/95" onclick="closeProjectModal()"></div>
+<div id="project-modal" class="hidden fixed inset-0 z-[9999] bg-slate-950/95 backdrop-blur-sm">
+    <!-- Close Button -->
+    <button onclick="closeProjectModal()" class="absolute top-4 right-4 lg:top-6 lg:right-6 z-50 p-3 bg-slate-800/90 hover:bg-slate-700 rounded-full text-white transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+    </button>
 
-    <!-- Modal Content - Full Screen -->
-    <div class="relative h-full w-full flex flex-col lg:flex-row">
-        <!-- Close Button -->
-        <button onclick="closeProjectModal()" style="position: fixed; top: 20px; right: 20px; z-index: 60; padding: 12px; background: rgba(15,23,42,0.9); border-radius: 50%; color: white; border: none; cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='rgba(51,65,85,0.9)'" onmouseout="this.style.background='rgba(15,23,42,0.9)'">
-            <svg style="width: 24px; height: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-            </svg>
-        </button>
-
-        <!-- Image Gallery - Left Side (Vertical Scroll) -->
-        <div id="modal-image-gallery" style="width: 100%; height: 50vh; background: #0f172a; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; padding: 8px;">
+    <!-- Modal Content Container -->
+    <div class="h-full w-full flex flex-col lg:flex-row p-4 pt-20 lg:p-6 gap-4">
+        <!-- Image Gallery - Top/Left -->
+        <div id="modal-image-gallery" class="w-full lg:w-3/5 h-1/2 lg:h-full bg-slate-900 rounded-lg overflow-y-auto flex flex-col gap-2 p-2">
             <!-- Images will be inserted here by JavaScript -->
         </div>
 
-        <!-- Project Info - Right Side -->
-        <div id="modal-info-container" style="width: 100%; height: 50vh; padding: 24px; overflow-y: auto; background: #1e293b;">
+        <!-- Project Info - Bottom/Right -->
+        <div id="modal-info-container" class="w-full lg:w-2/5 h-1/2 lg:h-full bg-slate-800/50 rounded-lg p-6 overflow-y-auto">
             <h2 id="modal-title" class="text-2xl lg:text-3xl font-bold text-white mb-4"></h2>
 
             <!-- Categories -->
-            <div id="modal-categories" class="flex flex-wrap gap-2 mb-4"></div>
+            <div id="modal-categories" class="flex flex-wrap gap-2 mb-6"></div>
 
             <!-- Description -->
-            <style>
-                #modal-detail { color: #cbd5e1; font-size: 14px; line-height: 1.7; }
-                #modal-detail p { margin-bottom: 12px; }
-                #modal-detail ul, #modal-detail ol { margin-bottom: 12px; padding-left: 20px; }
-                #modal-detail ul { list-style-type: disc; }
-                #modal-detail ol { list-style-type: decimal; }
-                #modal-detail li { margin-bottom: 4px; }
-                #modal-detail strong, #modal-detail b { color: #f1f5f9; font-weight: 600; }
-                #modal-detail em, #modal-detail i { font-style: italic; }
-                #modal-detail s { text-decoration: line-through; }
-                #modal-detail a { color: #22d3ee; text-decoration: underline; }
-                #modal-detail a:hover { color: #67e8f9; }
-            </style>
-            <div id="modal-detail" class="mb-6"></div>
+            <div id="modal-detail" class="text-slate-300 text-sm leading-relaxed mb-6 prose prose-invert prose-sm max-w-none"></div>
 
             <!-- Technologies -->
             <div class="mb-6">
@@ -127,10 +111,23 @@
             </div>
 
             <!-- Links -->
-            <div id="modal-links" class="flex flex-wrap gap-3" style="padding-bottom: 24px;"></div>
+            <div id="modal-links" class="flex flex-wrap gap-3"></div>
         </div>
     </div>
 </div>
+
+<style>
+    /* Modal detail content styling */
+    #modal-detail p { margin-bottom: 0.75rem; }
+    #modal-detail ul, #modal-detail ol { margin-bottom: 0.75rem; padding-left: 1.25rem; }
+    #modal-detail ul { list-style-type: disc; }
+    #modal-detail ol { list-style-type: decimal; }
+    #modal-detail li { margin-bottom: 0.25rem; }
+    #modal-detail strong, #modal-detail b { color: #f1f5f9; font-weight: 600; }
+    #modal-detail em, #modal-detail i { font-style: italic; }
+    #modal-detail a { color: #22d3ee; text-decoration: underline; }
+    #modal-detail a:hover { color: #67e8f9; }
+</style>
 
 @php
 $projectsJson = $projects->map(fn($project) => [
@@ -162,12 +159,12 @@ function openProjectModal(index) {
     const categoriesContainer = document.getElementById('modal-categories');
     categoriesContainer.innerHTML = project.categories.map(cat => {
         const colors = {
-            'web': 'bg-blue-500/20 text-blue-400',
-            'mobile': 'bg-green-500/20 text-green-400',
-            'api': 'bg-yellow-500/20 text-yellow-400',
-            'desktop': 'bg-purple-500/20 text-purple-400'
+            'web': 'bg-blue-500/20 text-blue-400 border border-blue-400/30',
+            'mobile': 'bg-green-500/20 text-green-400 border border-green-400/30',
+            'api': 'bg-yellow-500/20 text-yellow-400 border border-yellow-400/30',
+            'desktop': 'bg-purple-500/20 text-purple-400 border border-purple-400/30'
         };
-        return `<span class="px-3 py-1 ${colors[cat] || 'bg-slate-700 text-slate-300'} rounded-full text-sm font-medium">${cat.charAt(0).toUpperCase() + cat.slice(1)}</span>`;
+        return `<span class="px-3 py-1 ${colors[cat] || 'bg-slate-700 text-slate-300 border border-slate-600'} rounded-full text-sm font-medium">${cat.charAt(0).toUpperCase() + cat.slice(1)}</span>`;
     }).join('');
 
     // Set detail (or description if no detail)
@@ -175,7 +172,7 @@ function openProjectModal(index) {
 
     // Set technologies
     document.getElementById('modal-technologies').innerHTML = project.technologies.map(tech =>
-        `<span class="px-3 py-1 bg-slate-700/50 text-cyan-400 rounded-lg text-sm">${tech}</span>`
+        `<span class="px-3 py-1 bg-slate-700/50 text-cyan-400 rounded-lg text-sm border border-cyan-400/20">${tech}</span>`
     ).join('');
 
     // Set links
@@ -207,24 +204,6 @@ function openProjectModal(index) {
     currentImages = project.images || [];
     setupGallery();
 
-    // Adjust layout for desktop (side by side) vs mobile (stacked)
-    const galleryContainer = document.getElementById('modal-image-gallery');
-    const infoContainer = document.getElementById('modal-info-container');
-
-    if (window.innerWidth >= 1024) {
-        // Desktop: side by side, full height
-        galleryContainer.style.width = '55%';
-        galleryContainer.style.height = '100vh';
-        infoContainer.style.width = '45%';
-        infoContainer.style.height = '100vh';
-    } else {
-        // Mobile: stacked
-        galleryContainer.style.width = '100%';
-        galleryContainer.style.height = '50vh';
-        infoContainer.style.width = '100%';
-        infoContainer.style.height = '50vh';
-    }
-
     // Show modal
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
@@ -241,9 +220,9 @@ function setupGallery() {
 
     if (!currentImages || currentImages.length === 0) {
         galleryContainer.innerHTML = `
-            <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(6,182,212,0.2), rgba(168,85,247,0.2));">
-                <svg style="width: 96px; height: 96px; color: rgba(6,182,212,0.5);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+            <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-lg">
+                <svg class="w-24 h-24 text-cyan-400/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                 </svg>
             </div>
         `;
@@ -252,8 +231,11 @@ function setupGallery() {
 
     // Create vertical gallery with all images
     galleryContainer.innerHTML = currentImages.map((img, i) => `
-        <div style="flex-shrink: 0; width: 100%; border-radius: 8px; overflow: hidden; background: #1e293b;">
-            <img src="${img}" alt="Project image ${i + 1}" style="width: 100%; height: auto; display: block; object-fit: cover;" onerror="this.parentElement.innerHTML='<div style=\\'padding: 40px; text-align: center; color: #64748b;\\'>Image not found</div>'">
+        <div class="flex-shrink-0 w-full rounded-lg overflow-hidden bg-slate-800 border border-slate-700">
+            <img src="${img}"
+                 alt="Project image ${i + 1}"
+                 class="w-full h-auto block object-cover"
+                 onerror="this.parentElement.innerHTML='<div class=\\'p-10 text-center text-slate-500\\'>Image not found</div>'">
         </div>
     `).join('');
 

@@ -15,27 +15,22 @@ document.addEventListener('DOMContentLoaded', () => {
 function initSplashScreen() {
     const splash = document.getElementById('splash-screen');
 
-    // If no splash element or already seen this session, skip
+    // If no splash element, skip
     if (!splash) {
         startMainAnimations();
         return;
     }
 
-    // Show splash, hide main content
-    document.body.classList.add('splash-active');
-
-    // After splash animation plays (~2.2s), fade it out
+    // After all animations complete (~3.8s), fade out splash
     setTimeout(() => {
         splash.classList.add('splash-fade-out');
-        document.body.classList.remove('splash-active');
-        document.body.classList.add('splash-done');
 
-        // Start main animations after splash fades
+        // Start main animations and remove splash after fade
         setTimeout(() => {
             startMainAnimations();
             splash.remove();
-        }, 600);
-    }, 2200);
+        }, 500);
+    }, 3800);
 }
 
 function startMainAnimations() {
