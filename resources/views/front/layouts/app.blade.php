@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="@yield('meta_description', 'Portfolio - Fullstack Developer')">
 
-    <title>@yield('title', 'Portfolio') - Fullstack Developer</title>
+    <title>@yield('title', 'Portfolio') - Frecode</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
