@@ -7,7 +7,7 @@
  */
 
 // ─── KONFIGURASI ──────────────────────────────────────────────────────────────
-const INSTALLER_TOKEN = 'ganti-token-ini-sebelum-upload';
+const INSTALLER_TOKEN = 'base64:MmoTKw125jwKDJN2QZxyEXbjPLda4gbuOCDzxLIMrbU=';
 
 // ─── KEAMANAN ─────────────────────────────────────────────────────────────────
 if (!isset($_GET['token']) || $_GET['token'] !== INSTALLER_TOKEN) {
